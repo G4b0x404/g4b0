@@ -1,0 +1,101 @@
+---
+title: Knowledge Space
+template: splash
+hero:
+  tagline: Espacio para herramientas de hacking, scripts y Labs
+  image:
+    alt: Logo Táctico de G4b0
+    # Aquí es donde pondrás tu logo real cuando lo tengas. 
+    #file: ../../assets/iconryhoundsinfondo.png
+    # Por ahora, dejo este de prueba para que no se rompa el diseño:
+    dark: ../../assets/platinum_RYHOUND2.png
+    light: ../../assets/Logo_RYHOUND.png
+  actions:
+    - text: Iniciar Operación
+      link: /cheatsheets/
+      icon: rocket
+      variant: primary
+    - text: Volver a la Base
+      link: /
+      icon: external
+      variant: minimal
+---
+import { LinkCard, CardGrid, Badge, Steps, Icon, Aside } from '@astrojs/starlight/components';
+
+<style>{`
+  .hero {
+    gap: 0.1rem !important; 
+  }
+  .hero img {
+    margin-bottom: -0.1rem !important; 
+    max-height: 350px !important; 
+    position: relative;
+    z-index: 10;
+  }
+`}</style>
+
+<div style="margin-top: -2rem; margin-bottom: 2rem; text-align: center; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 10;">
+  <Badge text="HTB Labs : Activo" variant="caution" size="large" icon="alert" />
+  <Badge text="HTB Academy : Activo" variant="success" size="large" icon="check" />
+  <Badge text="Brain : Online" variant="note" size="large" icon="linux" />
+  <Badge text="CPTS : In progress" variant="note" size="large" icon="linux" />
+  <Badge text="Kali Linux : Activo" variant="caution" size="large" icon="alert" />
+  <Badge text="Parrot OS : Activo" variant="caution" size="large" icon="alert" />
+  <Badge text="Arch Linux : Activo" variant="success" size="large" icon="check" />
+</div>
+
+## 🗺️ Vectores de Aproximación
+
+<CardGrid stagger>
+  <LinkCard 
+    title="Enumeración & OSINT" 
+    description="Fase 1: Recolección de inteligencia y escaneo de superficie." 
+    href="/cheatsheets/recon" 
+    icon="magnifier"
+  />
+  <LinkCard 
+    title="Explotación & Payloads" 
+    description="Fase 2: Ejecución, bypass de defensas y reverse shells." 
+    href="/cheatsheets/exploit" 
+    icon="error"
+  />
+  <LinkCard 
+    title="Automatización Ofensiva" 
+    description="Scripts en Python para despliegues masivos y automatización de red." 
+    href="/scripts/python" 
+    icon="laptop"
+  />
+  <LinkCard 
+    title="Blue Team & SOC" 
+    description="Análisis de telemetría con Wazuh y defensa en entornos virtualizados." 
+    href="/configs/soc" 
+    icon="document"
+  />
+</CardGrid>
+
+<div style="margin: 4rem 0; opacity: 0.2;">
+  <hr />
+</div>
+
+## 🎯 Metodología de Ataque (Kill Chain)
+
+<Steps>
+
+1. **Reconocimiento y Análisis:**
+   Mapeo de la infraestructura objetivo. Identificación de puertos abiertos, servicios y vulnerabilidades lógicas.
+
+2. **Armamento (Weaponization):**
+   Preparación del arsenal. Adaptación de exploits públicos o creación de scripts a medida para evadir restricciones del entorno.
+
+3. **Explotación y Pivoting:**
+   Vulneración del objetivo inicial. Establecimiento de túneles seguros y movimiento lateral a través de la red interna corporativa.
+
+4. **Documentación:**
+   Registro meticuloso en esta wiki de cada vector utilizado, prueba de concepto (PoC) y la remediación sugerida para el cliente.
+
+</Steps>
+
+<Aside type="tip" title="Operaciones Rápidas">
+  Asegúrate de mantener actualizados tus alias tácticos en el `.bashrc`. Tienes la lista maestra de atajos en la sección de [Snippets & Scripts](/scripts/).
+</Aside>
+

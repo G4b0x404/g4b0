@@ -1,0 +1,60 @@
+---
+title: SMB (139/445)
+description: Cheat sheet táctico para listar recursos compartidos, usuarios y vulnerabilidades en Windows/Samba.
+---
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Credenciales Nulas">
+  El primer paso en SMB siempre es intentar conectarse con una sesión nula (sin usuario ni contraseña) o como el usuario `guest`.
+</Aside>
+
+
+## Smbclient (Sesión Nula)
+Intenta listar los recursos compartidos sin credenciales.
+
+```bash
+smbclient -L //<ip-target>/ -N
+```
+## Crackmapexec
+
+```bash
+crackmapexec smb <ip-target> -u '<user>' -p '<password>' 
+```
+```bash
+crackmapexec smb <ip-target> -u '<user>' -H '<hash>'
+```
+
+## NXC
+
+```bash
+nxc smb <ip-target> -u '<user>' -p '<password>' 
+```
+```bash
+nxc smb <ip-target> -u '<user>' -H '<hash>'
+```
+
+## SMBMAP
+
+```bash
+smbmap -H <ip-target> -u ‘<user>’
+```
+```bash
+smbmap -H <ip-target> -u ‘<user>’ -r '<directory-share>'
+```
+```bash
+smbmap -H <ip-target> -u '<user>' -p '<password>' -r '<directory-share>'
+```
+```bash
+smbmap -H <ip-target> -u '<anything>' #NULL session
+```
+```bash
+smbmap -H <ip-target> -u '<user>' -p '<password>' -r '<directory-share>/<subdirectory>'
+```
+```bash
+smbmap -H <ip-target> -u '<user>' -p '<password>' --download <directory-share>/<subdirectory>/<file>
+```
+```bash
+smbmap -H 10.10.10.172 -u SABatchJobs -p SABatchJobs -d megabank -A '(xlsx|docx|txt|xml)' -R
+```
+
+

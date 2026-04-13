@@ -1,0 +1,93 @@
+---
+title: Centro de Command and Control
+description: Visión global del arsenal, metodologías y estado operativo de las herramientas para auditorías.
+sidebar:
+  order: 1
+---
+import { CardGrid, LinkCard, Aside, Badge, Steps, FileTree, Icon } from '@astrojs/starlight/components';
+
+Bienvenido al núcleo de operaciones. Este repositorio no es un bloque de notas estático; es un ecosistema vivo diseñado para agilizar el despliegue de payloads, la enumeración de activos y el compromiso de infraestructuras durante ejercicios de Red Team, CTFs (Hack The Box) y certificaciones.
+
+<Aside type="danger" title="Aviso de Operaciones">
+  Todo el material contenido en esta wiki es de uso exclusivo para entornos controlados y con autorización explícita. Revisa el `scope.txt` de tu objetivo antes de iniciar la cadena de ataque.
+</Aside>
+
+---
+
+## 🗺️ Mapa de la Armería
+
+Conoce la estructura exacta de tus scripts y *cheat sheets* para que no pierdas tiempo buscando cuando estés bajo presión en un examen:
+
+<FileTree>
+- src/content/docs/
+  - cheatsheets/
+    - **index.mdx** # 📍 Estás aquí (Centro de Comando)
+    - enumeracion/
+      - recon.mdx # Escaneos Nmap, Ping Sweeps
+      - ffuf.mdx # Fuzzing de directorios y vhosts
+    - explotacion/
+      - sql-injection.mdx # Payloads para bases de datos
+      - ssti.mdx # Server-Side Template Injections
+    - movimiento-lateral/
+      - pivoting.mdx # Chisel, Socat, SSH Tunnels
+</FileTree>
+
+---
+
+## ⚙️ Flujo de Operación (Kill Chain)
+
+El arsenal está diseñado para seguir una metodología estricta. Nunca saltes fases.
+
+<Steps>
+
+1. **Reconocimiento y Enumeración:** Mapeo exhaustivo de la superficie de ataque. Si no lo ves, no lo puedes atacar. *(Foco: Puertos, Vhosts, Tecnologías).*
+2. **Armamento y Explotación:** Adaptación de exploits a las versiones exactas descubiertas en la fase anterior y obtención del acceso inicial (Reverse Shell).
+3. **Escalada de Privilegios:** Transición de un usuario de bajos privilegios (`www-data`) a control total del sistema (`root` o `NT AUTHORITY\SYSTEM`).
+4. **Pivoting y Movimiento Lateral:** Uso de la máquina comprometida como puente para atacar redes internas ocultas (Ej. Moviéndose hacia el Controlador de Dominio).
+
+</Steps>
+
+---
+
+## 🚀 Despliegue Rápido por Vectores
+
+<CardGrid stagger>
+  <LinkCard 
+    title="Enumeración & OSINT" 
+    description="Nmap, RustScan, FFuF, Gobuster, Amass." 
+    href="/cheatsheets/enumeracion/recon" 
+    icon="magnifier"
+  />
+  <LinkCard 
+    title="Inyecciones Web (Web-Pwn)" 
+    description="SQLi, XSS, SSTI, LFI/RFI y Command Injection." 
+    href="#" 
+    icon="laptop"
+  />
+  <LinkCard 
+    title="Active Directory" 
+    description="Kerberoasting, AS-REP Roasting, BloodHound." 
+    href="#" 
+    icon="seti:windows"
+  />
+  <LinkCard 
+    title="Persistencia & Evasión" 
+    description="Bypass de AMSI, ofuscación de payloads y C2." 
+    href="#" 
+    icon="random"
+  />
+</CardGrid>
+
+---
+
+## 📊 Matriz de Herramientas y Estado
+
+Control de calidad del arsenal documentado. Actualiza esta tabla conforme vayas depurando tus comandos en los laboratorios.
+
+| Táctica / Herramienta | Fase de la Kill Chain | Estado Operativo | Última Revisión |
+| :--- | :--- | :--- | :--- |
+| **Nmap / RustScan** | 1. Enumeración | <Badge text="Calibrado" variant="success" /> | *Reciente* |
+| **FFuF / Gobuster** | 1. Enumeración | <Badge text="Calibrado" variant="success" /> | *Reciente* |
+| **SQLMap / Manual SQLi** | 2. Explotación Web | <Badge text="En Pruebas" variant="note" /> | *Pendiente* |
+| **Chisel / Ligolo-ng** | 4. Movimiento Lateral | <Badge text="En Desarrollo" variant="caution" /> | *Pendiente* |
+| **Mimikatz** | 3. Post-Explotación | <Badge text="Requiere Updates" variant="danger" /> | *Antiguo* |

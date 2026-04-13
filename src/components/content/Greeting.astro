@@ -1,0 +1,38 @@
+---
+import type { TimeGreeting } from "../../types/shblog.config";
+import config from "@shConfig";
+
+// 依照當前時間變化問候語
+const hour = new Date().getHours();
+const TIME_GREETING: TimeGreeting[] = config.pages.home.greetings;
+
+// 正規化設定檔中的時間：將 24 轉換為 0 (表示午夜結束)
+const normalizeHour = (h: number | undefined) => (h === 24 ? 0 : h);
+
+const greeting =
+  TIME_GREETING.find((item) => {
+    const begin = normalizeHour(item.begin);
+    const finish = normalizeHour(item.finish);
+
+    // 有指定 begin 和 finish：檢查時間區間
+    if (begin !== undefined && finish !== undefined) {
+      // 處理跨越午夜的情況 (例如 21 到 0 或 23 到 1)
+      if (begin > finish) {
+        return hour >= begin || hour < finish;
+      }
+      return hour >= begin && hour < finish;
+    }
+    // 只有指定 begin：只匹配該小時
+    if (begin !== undefined && finish === undefined) {
+      return hour === begin;
+    }
+    // 都沒指定：fallback
+    return false;
+  })?.text ||
+  TIME_GREETING.find(
+    (item) => item.begin === undefined && item.finish === undefined,
+  )?.text ||
+  "你好!";
+---
+
+{greeting}

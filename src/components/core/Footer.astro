@@ -1,0 +1,134 @@
+---
+import SiteRuntime from "../widgets/SiteRuntime.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+import config from "@shConfig";
+
+let year: number | null = null;
+
+if (config.footer.copyright.yearUpdateStrategy === "fixed") {
+  year = new Date().getFullYear();
+} else if (typeof config.footer.copyright.yearUpdateStrategy === "number") {
+  // 如果是固定的時間（number）
+  year = config.footer.copyright.yearUpdateStrategy;
+}
+---
+
+<footer
+  transition:persist
+  class="relative lg:h-[400px] py-0 lg:py-10 lg:px-4 overflow-hidden flex justify-center"
+>
+  <!-- Background gradients -->
+  <div class="absolute inset-0 pointer-events-none">
+    <img
+      src="/assets/layouts/footer/footer_background_gradient.webp"
+      alt=""
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Center text overlay -->
+  <div
+    class="absolute left-1/2 top-[69%] -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
+  >
+    <h2
+      class="font-bold text-7xl md:text-[128px] leading-tight md:leading-none text-white/5 whitespace-nowrap"
+    >
+      DESIGNED BY
+      <br />
+      {config.author.name.toUpperCase()}
+    </h2>
+  </div>
+
+  <!-- Content container -->
+  <div
+    class="relative backdrop-blur-sm bg-white/10 border-0 lg:border border-white/10 rounded-none lg:rounded-[20px] p-6 md:p-10 h-full overflow-auto w-full max-w-[1278px]"
+  >
+    <div class="flex flex-col md:flex-row md:justify-between gap-8 h-full">
+      <!-- Left side -->
+      <div class="w-full md:w-[567px]">
+        <!-- Logo -->
+        <div class="mb-4">
+          <h3 class="text-white font-display text-xl font-black">
+            {config.title}
+          </h3>
+        </div>
+
+        <div class="h-px bg-white/20 w-full md:w-[260px] my-4"></div>
+
+        <!-- Description -->
+        <div class="text-white/60 text-sm leading-6 tracking-[0.7px] mb-6">
+          <p class="whitespace-pre-line">{config.footer.description}</p>
+        </div>
+        <SiteRuntime />
+      </div>
+
+      <!-- Right side -->
+      <div
+        class="w-full md:w-[567px] flex flex-col justify-between text-left md:text-right gap-6"
+      >
+        <!-- Top section -->
+        <div class="space-y-2">
+          <p class="text-white text-sm leading-normal">
+            Se permite la reproducción citando la fuente original y al autor
+            <br />
+            Para consultoria de ciberguridad ofensiva, escribeme：
+            <span class="underline decoration-solid">
+              {config.author.email}
+            </span>
+          </p>
+        </div>
+
+        <!-- Bottom section -->
+        <div class="space-y-2">
+          <div class="text-white text-[10px] leading-normal">
+            <p>
+              <a
+                href="/"
+                class="underline decoration-solid hover:text-white/80 transition-colors"
+              >
+                {config.title}
+              </a>
+              © <span class="sh-footer-year">{year ? year : ""}</span> by
+              <a
+                href="/"
+                class="underline decoration-solid hover:text-white/80 transition-colors"
+              >
+                {config.author.name}
+              </a>
+              is licensed under
+              <a
+                href={config.footer.copyright.url ?? "#"}
+                class="underline decoration-solid hover:text-white/80 transition-colors"
+              >
+                {config.footer.copyright.text}
+              </a>
+            </p>
+          </div>
+
+          <p class="text-white/40 text-[10px] leading-normal">
+            {config.footer.countryEmoji} © <span class="sh-footer-year">{year ? year : ""}</span>
+            {config.author.name}
+          </p>
+
+          <!-- Social links -->
+          <SocialLinks />
+
+          <a href="/sitemap-0.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{
+  year === null && (
+    <script>
+      const yearElements = document.querySelectorAll(".sh-footer-year");
+      const currentYear = new Date().getFullYear();
+      yearElements.forEach((el) => {
+        el.textContent = currentYear.toString();
+      });
+    </script>
+  )
+}

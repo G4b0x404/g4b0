@@ -1,0 +1,253 @@
+{
+  "main": {
+    "id": "ce51712bc56cf1dd",
+    "type": "split",
+    "children": [
+      {
+        "id": "54e3e7d4e95029a9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c7f8241939bd0797",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/blog/example-post.mdx",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "example-post"
+            }
+          },
+          {
+            "id": "112d75cc2450fed9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/blog/Active.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Active"
+            }
+          },
+          {
+            "id": "f9ce82e61ecf0aa9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/blog/example-post.mdx",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "example-post"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7185aef2d1c0c9ae",
+    "type": "split",
+    "children": [
+      {
+        "id": "bcc79a8737ff15d5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8034d74830599643",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "96f3d3f23a7eff9a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:easy",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "37a5f8d56a73b353",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 382.5
+  },
+  "right": {
+    "id": "21d18f64139cad7f",
+    "type": "split",
+    "children": [
+      {
+        "id": "af25bdcb254387cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b8bf782163d6ddd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "src/content/blog/DevArea/DevArea.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for DevArea"
+            }
+          },
+          {
+            "id": "1a18bad7eda53816",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "src/content/blog/DevArea/DevArea.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from DevArea"
+            }
+          },
+          {
+            "id": "6c86caf09b3b5b32",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9ae9452f1d4cf521",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "6d118c0c77adc15a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "src/content/blog/example-post.mdx",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of example-post"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "f9ce82e61ecf0aa9",
+  "lastOpenFiles": [
+    "src/assets/iconryhoundsinfondo.png",
+    "src/assets/platinum_RYHOUND2.png",
+    "src/content/docs/arsenal.mdx",
+    "src/content/docs/wiki.md",
+    "src/content/docs/arsenal.md",
+    "src/content/docs/index.md",
+    "src/content/docs/wiki - copia.md",
+    "src/content/blog/example-post.mdx",
+    "src/content/docs/wiki/index.md",
+    "src/content/config.ts",
+    "src/content/blog/Active.md",
+    "src/content/blog/Forest.md",
+    "src/content/docs/wiki",
+    "src/content/docs/Nueva carpeta",
+    "src/pages/404.astro",
+    "src/pages/404-blog.astro.bak",
+    "src/content/docs",
+    "src/content/Nueva carpeta",
+    "_tmp_26324_54d83e1845dbd7c88d564a9160163c8e",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403130529.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403130125.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403130007.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403123747.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403123258.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403123213.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403123015.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403122935.png",
+    "src/content/blog/images_all/images_forest/Pasted image 20260403121753.png",
+    "src/content/blog/first-post.md",
+    "src/content/blog/DevArea.md",
+    "src/content/blog/Kobold/Untitled.md",
+    "src/content/blog/DevArea/Untitled.md",
+    "node_modules/sitemap/api.md",
+    "src/content/blog/fourth-post.md",
+    "src/content/blog/markdown-style-guide.md"
+  ]
+}

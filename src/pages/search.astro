@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@components/layouts/BaseLayout.astro";
+import Hero from "@components/content/Home/Hero.astro";
+import { HeroSubtitle, HeroTitle } from "@components/content/Home/HeroItems";
+
+import { default as AstroSearch } from "astro-pagefind/components/Search";
+
+import "@/styles/pagefind.css";
+import BaseMainContent from "@components/layouts/BaseMainContent.astro";
+import Sidebar from "@components/Sidebar.astro";
+import config from "@shConfig";
+---
+
+<BaseLayout
+  title={config.pages.other.search.title}
+  description={config.pages.other.search.subTitle}
+  coverImage={config.pages.other.search.heroImage}
+>
+  <!-- Hero Section -->
+  <Hero>
+    <!-- Left: Main heading -->
+    <div class="lg:col-span-2" slot="left">
+      <HeroTitle>{config.pages.other.search.title}</HeroTitle>
+      <HeroSubtitle>{config.pages.other.search.subTitle}</HeroSubtitle>
+    </div>
+  </Hero>
+
+  <BaseMainContent>
+    <div class="flex-1">
+      <AstroSearch
+        id="search"
+        className="pagefind-ui"
+        uiOptions={{ showImages: false }}
+      />
+    </div>
+
+    <Sidebar />
+  </BaseMainContent>
+</BaseLayout>

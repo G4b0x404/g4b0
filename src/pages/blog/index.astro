@@ -1,0 +1,187 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@components/layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import Hero from "@components/content/Home/Hero.astro";
+import { HeroTitle, HeroSubtitle } from "@components/content/Home/HeroItems";
+import BaseMainContent from "@components/layouts/BaseMainContent.astro";
+import Sidebar from "@components/Sidebar.astro";
+import TimelineSinglePost from "@ui/timeline/TimelineSinglePost.astro";
+import I18nKey from "@i18n/i18nKey";
+import i18n from "@i18n/translation";
+import config from "@shConfig";
+
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    // 開發環境顯示所有文章,生產環境過濾掉 draft 文章
+    if (import.meta.env.DEV) return true;
+    return data.draft !== true;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 按年份分組文章
+const postsByYear = posts.reduce((acc: any, post: any) => {
+  const year = new Date(post.data.pubDate).getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+const years = Object.keys(postsByYear).sort(
+  (a, b) => parseInt(b) - parseInt(a),
+);
+---
+
+<BaseLayout
+  title={`${config.pages.blog.title} - ${SITE_TITLE}`}
+  description={SITE_DESCRIPTION}
+>
+  <!-- Hero Section -->
+  <Hero heroImage={config.pages.blog.heroImage}>
+    <div class="lg:col-span-2" slot="left">
+      <HeroTitle>
+        <span class="whitespace-pre-line">{config.pages.blog.title}</span>
+      </HeroTitle>
+      <HeroSubtitle slot="right">
+        <span class="whitespace-pre-line">{config.pages.blog.subTitle}</span>
+      </HeroSubtitle>
+    </div>
+  </Hero>
+
+  <BaseMainContent>
+    <div class="flex-1">
+      <div class="space-y-8" id="timeline-container">
+        {
+          years.map((year) => {
+            const yearPosts = postsByYear[year];
+            return (
+              <div class="relative year-group">
+                {/* 年份標題 */}
+                <div class="flex items-center gap-4 mb-6">
+                  <h2 class="text-4xl font-bold text-gray-900 dark:text-white">
+                    {year}
+                  </h2>
+                  <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-green-500" />
+                    <span class="text-sm text-gray-500 dark:text-gray-400">
+                      {yearPosts.length}{" "}
+                      {yearPosts.length === 1
+                        ? i18n(I18nKey.posts_timeline_year_post_count_single)
+                        : i18n(I18nKey.posts_timeline_year_post_count_plural)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 時間線 */}
+                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-700">
+                  {yearPosts.map((post: any) => {
+                    const month = new Date(post.data.pubDate)
+                      .toLocaleDateString("zh-TW", {
+                        month: "2-digit",
+                        day: "2-digit",
+                      })
+                      .replace("/", "-");
+                    const postTags = post.data.tags || [];
+
+                    return (
+                      <div
+                        class="relative mb-8 group timeline-item"
+                        style="display: none;"
+                      >
+                        {/* 時間線圓點 */}
+                        <div class="absolute -left-9.75 top-1 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-600 group-hover:bg-green-500 transition-colors" />
+
+                        {/* 日期標籤 */}
+                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                          {month}
+                        </div>
+
+                        {/* 文章卡片 */}
+                        <TimelineSinglePost
+                          postData={post}
+                          postTags={postTags}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <!-- Loading Sentinel -->
+      <div id="sentinel" class="h-20 flex justify-center items-center mt-8">
+        <div
+          class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 hidden"
+          id="loading-spinner"
+        >
+        </div>
+      </div>
+    </div>
+
+    <Sidebar />
+  </BaseMainContent>
+</BaseLayout>
+
+<script>
+  function initLazyLoad() {
+    const items = document.querySelectorAll(".timeline-item");
+    const itemsPerPage = 10;
+    let visibleCount = 0;
+    const sentinel = document.getElementById("sentinel");
+    const spinner = document.getElementById("loading-spinner");
+
+    // Function to show next batch
+    const showNextBatch = () => {
+      const nextCount = visibleCount + itemsPerPage;
+      let newlyShown = 0;
+
+      for (let i = visibleCount; i < nextCount && i < items.length; i++) {
+        (items[i] as HTMLElement).style.display = "block";
+        newlyShown++;
+      }
+
+      visibleCount += newlyShown;
+
+      // Hide sentinel if all items are shown
+      if (visibleCount >= items.length) {
+        if (sentinel) sentinel.style.display = "none";
+      }
+    };
+
+    // Show first batch immediately
+    showNextBatch();
+
+    // Setup Intersection Observer
+    if (sentinel && items.length > visibleCount) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            if (spinner) spinner.classList.remove("hidden");
+
+            // Simulate network delay for better UX feel (optional)
+            setTimeout(() => {
+              showNextBatch();
+              if (spinner) spinner.classList.add("hidden");
+            }, 300);
+          }
+        },
+        { rootMargin: "200px" },
+      );
+
+      observer.observe(sentinel);
+    } else if (sentinel && items.length <= visibleCount) {
+      sentinel.style.display = "none";
+    }
+  }
+
+  // Run on initial load
+  initLazyLoad();
+
+  // Support for View Transitions if enabled
+  document.addEventListener("astro:after-swap", initLazyLoad);
+</script>

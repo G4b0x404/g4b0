@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import "glightbox/dist/css/glightbox.css";
+
+interface Props {
+  src: string;
+  alt?: string;
+  title?: string;
+  [key: string]: any;
+}
+
+const { src, alt = "", title, ...rest } = Astro.props;
+
+// 若 src 是遠端圖片或路徑，提供預設寬高；本地 astro:assets 會自動計算
+const width = rest.width || 1020;
+const height = rest.height || 576;
+---
+
+<a
+  href={src}
+  class="glightbox glightbox-link"
+  data-title={title || null}
+  data-description={alt || null}
+>
+  <Image
+    {src}
+    alt={alt}
+    width={width}
+    height={height}
+    title={title}
+    class="glightbox-image"
+    {...rest}
+  />
+</a>
+
+<script is:inline>
+  import GLightbox from "glightbox";
+
+  const lightbox = GLightbox({
+    selector: ".glightbox",
+  });
+</script>
+
+<style>
+  .glightbox-images {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
+
+    *,
+    *::after,
+    *::before {
+      all: unset;
+      font-size: 1rem;
+    }
+  }
+
+  .glightbox-link {
+    block-size: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    inline-size: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+
+  .glightbox-image {
+    aspect-ratio: 1/1;
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<style is:global>
+  /* Overrides */
+  .gslide-description {
+    background-color: #1c1e1f !important;
+    color: #d2d2d2 !important;
+  }
+  .gslide-title {
+    color: #fff !important;
+  }
+  .gslide-title {
+    margin-bottom: 0 !important;
+  }
+  .gslide-title + .gslide-desc {
+    margin-top: 12px !important;
+  }
+</style>

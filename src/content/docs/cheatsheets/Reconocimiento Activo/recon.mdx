@@ -1,0 +1,81 @@
+---
+title: NMAP
+description: Cheat sheet táctico para escaneo de puertos, descubrimiento de servicios y evasión.
+---
+import { Aside, Tabs, TabItem, Badge, FileTree } from '@astrojs/starlight/components';
+
+<Aside type="danger" title="Reglas de Enganche">
+  Verificar alcance (*scope*) en el contrato antes de lanzar escaneos agresivos (`-T4`/`-T5`) o scripts intrusivos en redes de producción.
+</Aside>
+
+### Descubrimiento Inicial
+
+Antes de ejecutar, cambiar a modo root 
+
+```bash
+# 1. Ping Sweep (Solo descubrir hosts vivos en la subred, sin escanear puertos)
+nmap -sn <ip-target>
+```
+```bash
+nmap <ip-target> -sn -oA tnet | grep for | cut -d" " -f5
+```
+```bash
+nmap -p- --open <ip-target> -n -Pn -vvv -sV -oG initscan
+```
+
+### Scripts de reconocimiento inicial (NSE) <Badge text="Muy Ruidoso" variant="danger" />
+```bash
+nmap -sCV -p<ports> <ip-target> -sS
+```
+
+### Escaneo con una lista de IPs
+
+```bash
+nmap -sn -oA tnet -iL hosts.lst | grep for | cut -d" " -f5
+```
+### Escaneo de multiples IPs
+
+```bash
+nmap -sn -oA tnet 10.129.2.18 10.129.2.19 10.129.2.20 | grep for | cut -d" " -f5
+```
+
+```bash
+nmap -sn -oA tnet 10.129.2.18-20| grep for | cut -d" " -f5
+```
+### Escaneo con revision de paquetes
+
+```bash
+nmap 10.129.2.18 -sn -oA host -PE --packet-trace
+```
+```bash
+nmap 10.129.2.18 -sn -oA host -PE --packet-trace --disable-arp-ping
+```
+
+### Top 10 puertos TCP
+
+```bash
+nmap 10.129.2.28 --top-ports=10
+```
+
+### Traza de paquetes
+
+```bash
+nmap 10.129.2.28 -p 21 --packet-trace -Pn -n --disable-arp-ping
+```
+```bash
+nmap 10.129.2.28 -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT
+```
+### Escaneo UDP
+
+```bash
+nmap 10.129.2.28 -F -sU
+```
+
+```bash
+sudo nmap 10.129.2.28 -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reason
+```
+### Cambio de formato en los Outputs de NMAP
+
+```bash
+xsltproc target.xml -o target.html
+```

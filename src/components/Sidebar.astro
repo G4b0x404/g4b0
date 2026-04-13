@@ -1,0 +1,38 @@
+---
+import config from "@shConfig";
+import AuthorCard from "./widgets/AuthorCard";
+import DiscordCard from "./widgets/DiscordCard";
+---
+
+<!-- Sidebar -->
+<aside class="w-full lg:w-95 flex flex-col gap-5">
+  <!-- Author card -->
+  <AuthorCard
+    client:load
+    image={config.author.avatarUrl}
+    name={config.author.name}
+    slug={config.author.name.toLowerCase().replace(/\s+/g, "")}
+    description={config.author.bio}
+    links={config.author.links}
+  />
+
+  <!-- Discord cards -->
+  <a
+    href="https://discord.gg/CWCjhRGJ2e"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <DiscordCard
+      client:load
+      title="Discord"
+      subtitle="¡Únete a la Comunidad!"
+      description="Servidor de Discord para compartir writeups y networking en ciberseguridad!"
+    />
+  </a>
+
+  <!-- You can add more widgets here, we suggest adding a widget with the shadcn Card component like this: -->
+  <!-- <Card className="border border-white/10 rounded-[14px] p-5 relative overflow-hidden" /> -->
+
+  <!-- Never remove this slot, it's for the Table of Contents (ToC) - which will be sticky -->
+  <slot />
+</aside>

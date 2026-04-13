@@ -1,0 +1,173 @@
+---
+import "@/styles/global.css";
+
+import BaseHead from "@components/core/BaseHead.astro";
+import { SEPARATOR, SITE_TITLE } from "@/consts";
+
+import { Kbd, KbdGroup } from "@ui/kbd";
+import config from "@shConfig";
+
+import i18n from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+
+const locale = config.lang || "zh-Hant";
+---
+
+<!doctype html>
+<html lang={locale}>
+  <!-- 
+    冷知識,
+    如果你看到了這則注釋,那你應該也是個網頁大神。
+    沒錯,這個頁面還有其他小彩蛋！
+    例如如果在網址列加入 "rick"、"114514" 或 "uwu" 等關鍵字,頁面就會出現神奇的變化喔！
+    試試看吧！
+  -->
+  <head>
+    <BaseHead
+      title={`${i18n(I18nKey.notfound_title)} ${SEPARATOR} ${SITE_TITLE}`}
+      description={i18n(I18nKey.notfound_description)}
+    />
+  </head>
+  <body>
+    <div
+      class="min-h-screen w-screen flex flex-col bg-[#0078d7] pt-6 sm:pt-10 lg:pt-27 px-4 sm:px-8 lg:px-50 pb-32 sm:pb-20"
+    >
+      <!-- 主要內容 -->
+      <div class="flex flex-col items-start justify-start w-full gap-0">
+        <h1 class="text-7xl sm:text-9xl lg:text-[200px] font-normal">
+          {Math.random() < 0.1 ? ":)" : ":("}
+        </h1>
+        <h2
+          class="text-xl sm:text-3xl lg:text-5xl/16 font-thin mt-6 ml-1 sm:ml-2"
+        >
+          {i18n(I18nKey.notfound_bsod_title_line_1)}<br />
+          {i18n(I18nKey.notfound_bsod_title_line_2)}
+        </h2>
+        <h2
+          id="progress"
+          class="text-xl sm:text-3xl lg:text-5xl/16 font-thin ml-2 sm:ml-4 mt-4 sm:mt-6"
+        >
+          {i18n(I18nKey.notfound_finished_percent_description)} 0%
+        </h2>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row ml-2 sm:ml-4 mt-4 sm:mt-6 gap-4 sm:gap-6"
+      >
+        <div
+          class="h-24 w-24 sm:h-30 sm:w-30 p-2 bg-white flex justify-center align-middle shrink-0"
+        >
+          <img
+            id="qr-image"
+            src="/assets/layouts/404/404_qr.svg"
+            class="m-auto"
+            alt="Windows Logo"
+          />
+        </div>
+        <div
+          class="text-white font-light max-w-full sm:max-w-lg text-sm sm:text-base"
+        >
+          <p id="description" class="wrap-break-word">
+            {i18n(I18nKey.notfound_please_go_back_normal)}
+          </p>
+          <p class="mt-4 sm:mt-10">
+            {i18n(I18nKey.notfound_bsod_description_1)}
+          </p>
+          <p>{i18n(I18nKey.notfound_bsod_description_2)}</p>
+          <p id="failed-item" class="break-all">
+            {i18n(I18nKey.notfound_bsod_failed_item)}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      id="info"
+      hidden
+      class="fixed bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 sm:left-4/9 sm:translate-x-0 bg-blue-600/60 px-3 sm:px-4 py-2 rounded-xl text-sm sm:text-base max-w-[90vw] sm:max-w-none text-center sm:text-left"
+    >
+      {i18n(I18nKey.notfound_press_any_key_1)}
+      <KbdGroup><Kbd>{i18n(I18nKey.notfound_press_any_key_2)}</Kbd></KbdGroup>
+      {i18n(I18nKey.notfound_press_any_key_3)}
+    </div>
+  </body>
+</html>
+
+<script
+  is:inline
+  define:vars={{
+    notfound_finished_percent_description: i18n(
+      I18nKey.notfound_finished_percent_description,
+    ),
+    enable404EasterEgg: config.behavior.enable404EasterEgg,
+    i18n_normal: i18n(I18nKey.notfound_please_go_back_normal),
+    i18n_rickroll: i18n(I18nKey.notfound_please_go_back_rickroll),
+    i18n_homo: i18n(I18nKey.notfound_please_go_back_homo),
+    i18n_failed_item: i18n(I18nKey.notfound_bsod_failed_item),
+  }}
+>
+  // 彩蛋邏輯
+  const url = window.location.href;
+
+  let qr_img = "/assets/layouts/404/404_qr.svg";
+  let description =
+    i18n_normal ||
+    "如需此問題與可能修正的詳細資訊,請前往 https://api.samhacker.xyz/404 觀看詳細資訊。";
+
+  if (enable404EasterEgg) {
+    if (url.toLowerCase().includes("rick")) {
+      qr_img = "/assets/layouts/404/404_rickroll.svg";
+      description =
+        i18n_rickroll ||
+        "如需此問題與可能修正的詳細資訊,請前往 https://api.samhacker.xyz/rick 觀看驚喜影片";
+    } else if (
+      url.toLowerCase().includes("114514") ||
+      url.toLowerCase().includes("1919810")
+    ) {
+      qr_img = "/assets/layouts/404/404_yajyuusenpai.png";
+      description =
+        i18n_homo || "如需此問題與可能修正的詳細資訊,請先重新看一遍銀夢(確信";
+    } else if (url.toLowerCase().includes("uwu")) {
+      qr_img = "/assets/layouts/404/404_uwu.png";
+    }
+  }
+
+  // 更新 DOM
+  const qrImage = document.getElementById("qr-image");
+  const descriptionElement = document.getElementById("description");
+  const failedItemElement = document.getElementById("failed-item");
+
+  if (qrImage) qrImage.src = qr_img;
+  if (descriptionElement) descriptionElement.textContent = description;
+  if (failedItemElement) {
+    const urlPath = url.toLowerCase().replace(/^https?:\/\//, "");
+    failedItemElement.textContent = `${i18n_failed_item}${urlPath}.lnk`;
+  }
+
+  // 模擬進度條
+  let progress = 0;
+  const progressElement = document.getElementById("progress");
+  const intervalId = window.setInterval(() => {
+    if (progress < 100) {
+      progress += Math.floor(Math.random() * 10) + 1; // 每次增加1-10%
+      if (progress > 100) {
+        progress = 100;
+        // 移除 #info 的hidden屬性
+        const infoElement = document.getElementById("info");
+        if (infoElement) {
+          infoElement.hidden = false;
+        } else {
+          console.error("找不到 #info 元素");
+        }
+        // 停止更新進度條
+        window.clearInterval(intervalId);
+        // 監聽鍵盤事件,按下任意鍵返回首頁
+        document.addEventListener("keydown", () => {
+          window.location.href = "/";
+        });
+      }
+      if (progressElement)
+        progressElement.textContent = `${notfound_finished_percent_description} ${progress}%`;
+    } else {
+      window.clearInterval(intervalId);
+    }
+  }, 1000);
+</script>

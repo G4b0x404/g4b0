@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+import config from "@shConfig";
+---
+
+<Layout
+  title={config.pages.other.about.title}
+  description={config.pages.other.about.subTitle}
+  pubDate={new Date("August 08 2021")}
+  heroImage={config.pages.other.about.heroImage}
+  headings={[]}
+>
+  <div class="mb-16">
+    <h2 class="text-2xl font-bold mb-4">Quien soy</h2>
+    <p class="content-text">
+      ¡Hola! Soy G4b0, profesional en Ingenieria de Telecomunicaciones y con experiencia en infraestructura de Redes. Actualmente me dedico a aprender sobre Hacking Etico
+      dentro de la plataforma de <a href="https://www.hackthebox.com/">HackTheBox</a> con la idea de aportar a la defensa apartir del ataque en entornos reales.
+
+      Dentro de mi experiencia en Redes, pude tocar puntos relevantes, desde atenciones de nivel 1 hasta participar en proyectos de implementacion en instituciones financieras,
+      especificamente usando marcas como Cisco Fortinet y Huawei
+
+      Ahora mi objetivo es dedicarme a la Ciberseguridad Ofensiva, actualmente vengo participando en las "Season de Hack The Box" como jugador de CTF
+      y cuento con la certificacion <a href="https://ine.com/security/certifications/ejpt-certification">eJPTv2</a>, pronto vendrán mas certificaciones y
+      estaré contando mi experiencia por este medio
+
+    </p>
+    <p class="content-text">
+      Dentro de las certificaciones que me gustaria sacar, está la <a href="https://ine.com/security/certifications/ewptx-certification/">eWPTXv3</a> (en progreso), 
+      <a href="https://www.offsec.com/products/oscp-plus/">OSCP</a>, <a href="https://www.alteredsecurity.com/post/certified-red-team-professional-crtp">CRTP</a> 
+      y todas las <a href="https://academy.hackthebox.com/preview/certifications">Certificaciones de Hack The Box</a>, algo cierto es que la
+      OSCP está sobrevalorada, el costo es muy alto para un examen "Nivel junior", pero esto al final es decision de cada uno, en algun momento de mi vida tendré el dinero suficiente
+      para comprarla asi que me mantengo motivado.
+
+    
+      <br />
+      Aunque mis habilidades técnicas aún no son las de un experto, si también te interesan estas áreas, ¿quizás podríamos intercambiar ideas?, si te animas go Linkedin :D
+    </p>
+    <p class="content-text">
+      
+    </p>
+    <p class="content-text">
+      
+    </p>
+    <p class="content-text">
+      
+    </p>
+  </div>
+  <div class="mb-16">
+    <h2 class="text-2xl font-bold mb-4">Acerca de este blog</h2>
+    <p class="content-text">
+      Este sitio web tiene como objetivo compartir contenido de Ciberseguridad Ofensiva como writeups, scripting, PoCs, Certs y alguna locura
+      tecnica que ocurra en medio del laburo.
+    </p>
+    <p class="content-text">
+      La idea de levantar el blog fue interesante porque habian muchas alternativas, desde hacerlo from scratch (que pereza) o hacer
+      uso de frameworks, (que era lo mas viable ya que no soy desarrollador) es por ello que decidí usar Astro, sinceramente no vi esta opcion como
+      la mas sencilla pero vale la pena el esfuerzo por los templates que tiene y al final quedan muy bien.
+    </p>
+    <p class="content-text">
+      
+    </p>
+    <p class="content-text">
+      
+    </p>
+  </div>
+</Layout>
