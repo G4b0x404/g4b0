@@ -36,17 +36,17 @@
             }
           },
           {
-            "id": "f9ce82e61ecf0aa9",
+            "id": "e13cd99461366b0c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/example-post.mdx",
+                "file": "src/content/docs/cheatsheets/Servicios/AD.mdx",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "example-post"
+              "title": "AD"
             }
           }
         ],
@@ -185,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/blog/example-post.mdx",
+                "file": "src/content/docs/cheatsheets/Servicios/AD.mdx",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of example-post"
+              "title": "Outline of AD"
             }
           }
         ],
@@ -212,8 +212,23 @@
       "bases:Create new base": false
     }
   },
-  "active": "f9ce82e61ecf0aa9",
+  "active": "e13cd99461366b0c",
   "lastOpenFiles": [
+    "public/assets/logo/social_media/iconlinkedin.svg",
+    "public/assets/logo/social_media/linkedin.svg",
+    "public/assets/logo/social_media/LinkedInIconLogo.svg",
+    "public/assets/logo/social_media/HTB.svg",
+    "public/assets/logo/social_media/HTB.png",
+    "public/assets/logo/HTB.png",
+    "public/assets/layouts/homepage/acercade.png",
+    "public/assets/layouts/homepage/fondoblog2.png",
+    "public/assets/layouts/homepage/fondoblog.png",
+    "src/content/blog/Active.md",
+    "src/content/docs/cheatsheets/Servicios/AD.mdx",
+    "src/content/docs/cheatsheets/Servicios/AD.md",
+    "src/content/docs/cheatsheets/Servicios/SMB.mdx",
+    "src/content/docs/cheatsheets/Servicios/FTP.mdx",
+    "src/content/blog/example-post.mdx",
     "src/assets/iconryhoundsinfondo.png",
     "src/assets/platinum_RYHOUND2.png",
     "src/content/docs/arsenal.mdx",
@@ -221,27 +236,13 @@
     "src/content/docs/arsenal.md",
     "src/content/docs/index.md",
     "src/content/docs/wiki - copia.md",
-    "src/content/blog/example-post.mdx",
     "src/content/docs/wiki/index.md",
     "src/content/config.ts",
-    "src/content/blog/Active.md",
     "src/content/blog/Forest.md",
     "src/content/docs/wiki",
     "src/content/docs/Nueva carpeta",
     "src/pages/404.astro",
     "src/pages/404-blog.astro.bak",
-    "src/content/docs",
-    "src/content/Nueva carpeta",
-    "_tmp_26324_54d83e1845dbd7c88d564a9160163c8e",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403130529.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403130125.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403130007.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403123747.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403123258.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403123213.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403123015.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403122935.png",
-    "src/content/blog/images_all/images_forest/Pasted image 20260403121753.png",
     "src/content/blog/first-post.md",
     "src/content/blog/DevArea.md",
     "src/content/blog/Kobold/Untitled.md",

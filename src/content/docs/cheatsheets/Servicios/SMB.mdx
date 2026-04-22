@@ -15,13 +15,18 @@ Intenta listar los recursos compartidos sin credenciales.
 ```bash
 smbclient -L //<ip-target>/ -N
 ```
+
 ## Crackmapexec
 
 ```bash
 crackmapexec smb <ip-target> -u '<user>' -p '<password>' 
 ```
+
 ```bash
 crackmapexec smb <ip-target> -u '<user>' -H '<hash>'
+```
+```bash
+crackmapexec smb 172.16.5.5 -u avazquez -p Password123 --pass-pol
 ```
 
 ## NXC
@@ -56,5 +61,6 @@ smbmap -H <ip-target> -u '<user>' -p '<password>' --download <directory-share>/<
 ```bash
 smbmap -H 10.10.10.172 -u SABatchJobs -p SABatchJobs -d megabank -A '(xlsx|docx|txt|xml)' -R
 ```
+
 
 

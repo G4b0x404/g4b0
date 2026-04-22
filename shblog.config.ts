@@ -16,26 +16,26 @@ import type { ShBlogConfig } from "./src/types/shblog.config.d";
 const config: ShBlogConfig = {
   // Nombre del sitio
   // Este nombre aparecerá en la pestaña del navegador, cabecera y resultados de búsqueda
-  title: "G4b0 CyberSec Blog",
+  title: "G4b0_Docs",
 
   // Descripción del sitio
   // Aparecerá en el SEO y metadatos
   description:
-    "Blog personal de G4b0. Notas sobre Ciberseguridad, Seguridad Ofensiva y Writeups de CTFs.",
+    "Blog de G4b0 sobre Seguridad Ofensiva y Pentesting. Explora notas técnicas, metodologías Red Team y writeups detallados de CTFs en Hack The Box.",
 
   // Idioma del sitio (Etiqueta IETF)
   lang: "es",
   siteLang: "en", // Mantenemos la variable interna del tema para evitar conflictos
 
   // Ruta del Favicon
-  favicon: "/favicon4.png",
+  favicon: "/favicon5.png",
 
   // Configuración de páginas
   pages: {
     // Configuración de la página de inicio
     home: {
       title: "El intruso no avisa\nUn verdadero hacker tampoco.", 
-      heroImage: "/assets/layouts/homepage/banner.png", 
+      heroImage: "/assets/layouts/homepage/fondoblog.png", 
       greetings: [
         // Saludos según la hora del día
         {
@@ -86,20 +86,20 @@ const config: ShBlogConfig = {
         title: "Búsqueda interna",
         subTitle: "Busca el contenido que necesitas...",
         heroImage:
-          "/assets/layouts/homepage/fondobanner.jpg",
+          "/assets/layouts/homepage/fondorecursos.png",
       },
       friends: {
         title: "Enlaces de Interés",
         subTitle:
           "Lista de herramientas y sitios recomendados en el ámbito de la ciberseguridad.",
         heroImage:
-          "/assets/layouts/homepage/fondobanner.jpg",
+          "/assets/layouts/homepage/fondorecursos.png",
       },
       about: {
         title: "Sobre mí y este sitio",
         subTitle: "Aquí puedes conocer más sobre mi perfil.",
         heroImage:
-          "/assets/layouts/homepage/ProfileHTB.png",
+          "/assets/layouts/homepage/acercade.png",
       },
     },
   },
@@ -113,7 +113,7 @@ const config: ShBlogConfig = {
       method: "overlay",
     },
     defaultPostImage:
-      "/assets/layouts/homepage/fondobanner.jpg",
+      "/assets/layouts/homepage/fondoblog2.png",
     postsPerPage: 6,
     titleSeparator: "-",
     enableTransitions: false,
@@ -122,8 +122,8 @@ const config: ShBlogConfig = {
 
   // Información del autor
   author: {
-    name: "G4b0",
-    bio: "Electronics & Telecommunications Enginner | Offensive Security Student | eJPTv2 | CTF Player",
+    name: "Gabriel Garcia (aka G4b0)",
+    bio: "Offensive Security | eJPTv2 | Electronics & Telecomunications Engineer | Network & IT Analyst | CTF Player",
     email: "mrslaac801@gmail.com",
     avatarUrl:
       "https://avatars.githubusercontent.com/u/106538662?s=400&u=f79fc18daf6e626cd8ead74d4dc91b0ca5cf8014&v=4",
@@ -131,7 +131,7 @@ const config: ShBlogConfig = {
     // Enlaces de redes sociales
     links: [
       {
-        icon: "/assets/logo/social_media/linkedin_icon.svg",
+        icon: "/assets/logo/social_media/iconlinkedin.svg",
         to: "https://www.linkedin.com/in/pgarcia-ramos",
         label: "Linkedin",
       },
@@ -139,6 +139,11 @@ const config: ShBlogConfig = {
         icon: "Github",
         to: "https://github.com/G4b0x404",
         label: "GitHub",
+      },
+      {
+        icon: "/assets/logo/social_media/HTB.svg",
+        to: "https://app.hackthebox.com/public/users/2154988",
+        label: "HackTheBox-Profile",
       },
     ],
   },
@@ -157,14 +162,14 @@ const config: ShBlogConfig = {
         icon: Newspaper,
       },
       {
-        title: "Sobre Mí",
-        href: "/about",
-        icon: Info,
-      },
-      {
         title: "Recursos",
         href: "/friends",
         icon: Handshake,
+      },
+      {
+        title: "Sobre Mí",
+        href: "/about",
+        icon: Info,
       },
       {
         title: "Contacto",
