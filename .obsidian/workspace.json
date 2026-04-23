@@ -49,8 +49,7 @@
               "title": "AD"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,13 +184,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/docs/cheatsheets/Servicios/AD.mdx",
+                "file": "src/content/blog/example-post.mdx",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AD"
+              "title": "Outline of example-post"
             }
           }
         ],
@@ -212,8 +211,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "e13cd99461366b0c",
+  "active": "c7f8241939bd0797",
   "lastOpenFiles": [
+    "src/content/blog/Active.md",
+    "src/content/blog/example-post.mdx",
+    "src/content/docs/cheatsheets/Servicios/AD.mdx",
     "public/assets/logo/social_media/iconlinkedin.svg",
     "public/assets/logo/social_media/linkedin.svg",
     "public/assets/logo/social_media/LinkedInIconLogo.svg",
@@ -223,14 +225,10 @@
     "public/assets/layouts/homepage/acercade.png",
     "public/assets/layouts/homepage/fondoblog2.png",
     "public/assets/layouts/homepage/fondoblog.png",
-    "src/content/blog/Active.md",
-    "src/content/docs/cheatsheets/Servicios/AD.mdx",
     "src/content/docs/cheatsheets/Servicios/AD.md",
     "src/content/docs/cheatsheets/Servicios/SMB.mdx",
     "src/content/docs/cheatsheets/Servicios/FTP.mdx",
-    "src/content/blog/example-post.mdx",
     "src/assets/iconryhoundsinfondo.png",
-    "src/assets/platinum_RYHOUND2.png",
     "src/content/docs/arsenal.mdx",
     "src/content/docs/wiki.md",
     "src/content/docs/arsenal.md",
