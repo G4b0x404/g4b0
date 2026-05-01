@@ -1,5 +1,5 @@
 ---
-title: Knowledge Space
+title: "Knowledge Space"
 template: splash
 hero:
   tagline: Espacio para herramientas de hacking, scripts y Labs
@@ -20,6 +20,7 @@ hero:
       icon: external
       variant: minimal
 ---
+
 import { LinkCard, CardGrid, Badge, Steps, Icon, Aside } from '@astrojs/starlight/components';
 
 <style>{`
@@ -48,27 +49,27 @@ import { LinkCard, CardGrid, Badge, Steps, Icon, Aside } from '@astrojs/starligh
 
 <CardGrid stagger>
   <LinkCard 
-    title="Enumeración & OSINT" 
-    description="Fase 1: Recolección de inteligencia y escaneo de superficie." 
+    title="Metodologia y cheatsheets" 
+    description="Lista de comandos" 
     href="/cheatsheets/recon" 
     icon="magnifier"
   />
   <LinkCard 
     title="Explotación & Payloads" 
     description="Fase 2: Ejecución, bypass de defensas y reverse shells." 
-    href="/cheatsheets/exploit" 
+    href="/exploits/exploit" 
     icon="error"
   />
   <LinkCard 
-    title="Automatización Ofensiva" 
+    title="Conceptos Tecnicos" 
     description="Scripts en Python para despliegues masivos y automatización de red." 
-    href="/scripts/python" 
+    href="/conceptos/def" 
     icon="laptop"
   />
   <LinkCard 
-    title="Blue Team & SOC" 
-    description="Análisis de telemetría con Wazuh y defensa en entornos virtualizados." 
-    href="/configs/soc" 
+    title="Pruebas de Concepto" 
+    description="Analisis de algunas vulnerabilidades o CVEs" 
+    href="/PoC/poc" 
     icon="document"
   />
 </CardGrid>
@@ -91,4 +92,3 @@ import { LinkCard, CardGrid, Badge, Steps, Icon, Aside } from '@astrojs/starligh
 <Aside type="tip" title="Operaciones Rápidas">
   Asegúrate de mantener actualizados tus alias tácticos en el `.bashrc`. Tienes la lista maestra de atajos en la sección de [Snippets & Scripts](/scripts/).
 </Aside>
-

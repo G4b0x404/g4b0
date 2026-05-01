@@ -77,13 +77,13 @@ export default defineConfig({
       autogenerate: { directory: 'conceptos' },
     },
     {
-      label: '🐍 Snippets & Scripts',
-      autogenerate: { directory: 'scripts' },
+      label: '🐍 Exploits y Payloads',
+      autogenerate: { directory: 'exploits' },
     },
     {
-      label: '⚙️ Configs & Labs',
+      label: '⚙️ Pruebas de Concepto',
       collapsed: true, // Lo dejamos cerrado por defecto para mantener limpio el menú
-      autogenerate: { directory: 'configs' },
+      autogenerate: { directory: 'PoC' },
     },
   ]
 })],
