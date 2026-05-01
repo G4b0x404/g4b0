@@ -1,51 +1,37 @@
 ---
-title: First post
-description: Lorem ipsum dolor sit amet
-pubDate: 2022-07-08T04:00:00.000Z
-heroImage: ../../assets/blog-placeholder-3.jpg
-category: Astro預設文章
+title: Comprometiendo clientes WSUS mediante ADCS y DNS Zone Abuse
+description: Secuestrando clientes WSUS mediante certificados falsos y envenenamiento DNS.
+pubDate: 2026-05-01T04:00:00.000Z
+heroImage: ../../assets/wsus4.png
+category: Blog
 draft: false
 tags:
   - Commit
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra.
+Antes de entrar de lleno a la parte práctica y los comandos, es vital asentar las bases teóricas. A menudo, en el mundo del *Red Teaming*, nos encontramos con vulnerabilidades que nacen no de un error de código, sino de una mitigación humana mal implementada. Este es el caso de **ESC17**. 
 
-## 測試代碼區塊
+Para entender cómo llegamos aquí, primero debemos aclarar algunos conceptos clave sobre la infraestructura de Microsoft. 
+## ¿Qué significa "ESC"? 
 
-這是一個簡單的 Python 代碼範例：
+La denominación **ESC** hace referencia a vulnerabilidades enfocadas exclusivamente en abusar de **AD CS** (Active Directory Certificate Services). El número que le sigue (ESC1, ESC8, ESC17, etc.) es simplemente una convención creada por investigadores de ciberseguridad para catalogar estas técnicas en orden de descubrimiento. 
+El servidor AD CS actúa como la "oficina de pasaportes" de una red corporativa: emite certificados digitales que los usuarios y las máquinas utilizan para autenticarse, cifrar tráfico o firmar código.
+## El Rol de WSUS en la Red 
 
-```python file=somewhere/something.py
-if samhacker == 200:
-    doSomeThing()
-else:
-    doTheOtherThing()
+Por otro lado, tenemos a **WSUS** (Windows Server Update Services). Este es un servicio vital para el ahorro de ancho de banda en cualquier infraestructura corporativa. Su función es permitir a los administradores de TI descargar actualizaciones desde los servidores de Microsoft una sola vez y distribuirlas automáticamente a todos los *endpoints* del dominio, en lugar de que cada máquina lo haga individualmente saturando la red. 
 
-print("something")
-```
+Históricamente, el servicio de WSUS funcionaba por **HTTP** en texto plano. Esto era un problema enorme de seguridad: permitía a los atacantes en la red local realizar un ataque *Machine-in-the-Middle* (MITM) e inyectar actualizaciones maliciosas que se ejecutaban con los máximos privilegios del sistema (`NT AUTHORITY\SYSTEM`). Para evitar esto, la industria recomendó la mitigación lógica: **migrar WSUS a HTTPS** para cifrar el tráfico y validar la identidad del servidor. 
+## El Origen de ESC17: Una mitigación a medias 
 
-這是帶行號的代碼：
+Aquí es donde la historia se pone interesante y donde entra la vulnerabilidad **ESC17**, detallada recientemente por investigadores de la firma *Digitrace* con el post [Using ADCS to Attack HTTPS-Enabled WSUS Clients](https://blog.digitrace.de/2026/01/using-adcs-to-attack-https-enabled-wsus-clients/)(basándose en el trabajo de Austin Coontz). 
+ESC17 aparece de manera curiosa como consecuencia de una mala solución a una vulnerabilidad famosa anterior: **ESC1**. Cuando se descubrió ESC1, los administradores de sistemas corrieron a mitigarla. Eliminaron de sus plantillas de certificados de AD CS los permisos críticos (los EKU de *Client Authentication*), ya que estos permitían a los atacantes iniciar sesión como Administradores de Dominio. 
 
-```rust file=src/main.rs start=12 numbers
-fn main() {
-    println!("Hello, world!");
-    let x = 42;
-    let y = x + 1;
-}
-```
+Sin embargo, dejaron intactos los permisos de **Autenticación de Servidor** (*Server Authentication*), asumiendo que eran inofensivos porque "solo sirven para levantar páginas web internas con HTTPS". **Grave error.** 
 
-這是一個 TypeScript 範例：
+ESC17 demuestra que un atacante puede abusar de esa plantilla "parcheada" para emitir un certificado falso de servidor, romper la confianza del canal HTTPS de WSUS y comprometer las máquinas de la red. Si el certificado proviene del AD CS legítimo de la empresa, las computadoras confiarán ciegamente en él.
 
-```typescript
-interface User {
-  name: string;
-  age: number;
-}
+## El eslabón perdido: ADIDNS (DNS Zone Abuse) 
 
-const user: User = {
-  name: "Sam",
-  age: 25,
-};
-```
+Los enfoques iniciales para explotar esta falla dependían de hacer *ARP Spoofing* para interceptar el tráfico. La limitación técnica de esto es que requería que el atacante y la víctima estuvieran en el mismo segmento de red (Capa 2). Aquí entra el vector documentado por *Mustafa Durukan* [ESC17: From ADCS Misconfiguration to WSUS Client Compromise via DNS Zone Abuse | Mustafa Durukan](https://mustafanafizdurukan.github.io/posts/esc17-wsus-dns-abuse/). 
 
-Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing.
+En un entorno de Active Directory, la zona DNS integrada (ADIDNS) permite, por defecto, que *cualquier usuario autenticado* cree nuevos registros DNS. Si un atacante inyecta un registro (o un comodín `*`) apuntando desde el FQDN del servidor WSUS hacia la IP de su máquina atacante, el tráfico de *todos* los clientes del dominio será redirigido hacia él de forma nativa, saltándose la restricción de subredes.

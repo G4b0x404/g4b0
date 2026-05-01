@@ -1,6 +1,6 @@
 ---
 title: Active
-description: Machine 9  - Season 10 HTB
+description: Machine HTB
 pubDate: 2/04/2026
 heroImage: ../../assets/activeimage.png
 category: Writeup
