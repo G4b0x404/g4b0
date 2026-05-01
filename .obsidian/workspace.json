@@ -37,12 +37,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/post_expo.md",
+                "file": "src/content/blog/markdown-style-guide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "post_expo"
+              "title": "markdown-style-guide"
             }
           },
           {
@@ -195,13 +195,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/blog/post_expo.md",
+                "file": "src/content/blog/markdown-style-guide.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of post_expo"
+              "title": "Outline of markdown-style-guide"
             }
           }
         ],
@@ -224,8 +224,9 @@
   },
   "active": "8742a21dd9238c91",
   "lastOpenFiles": [
-    "src/content/blog/markdown-style-guide.md",
     "src/content/blog/post_expo.md",
+    "src/content/blog/post_expo1.md",
+    "src/content/blog/markdown-style-guide.md",
     "src/content/blog/post_expo.mdx",
     "src/content/blog/example-post.mdx",
     "src/assets/wsus3.png",
