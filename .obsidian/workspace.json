@@ -37,12 +37,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/markdown-style-guide.md",
+                "file": "src/content/blog/post_expo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "markdown-style-guide"
+              "title": "post_expo"
             }
           },
           {
@@ -222,11 +222,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "8034d74830599643",
+  "active": "8742a21dd9238c91",
   "lastOpenFiles": [
+    "src/content/blog/markdown-style-guide.md",
     "src/content/blog/post_expo.md",
     "src/content/blog/post_expo.mdx",
-    "src/content/blog/markdown-style-guide.md",
     "src/content/blog/example-post.mdx",
     "src/assets/wsus3.png",
     "src/assets/portadadevarea.png",
