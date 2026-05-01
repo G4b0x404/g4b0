@@ -7,6 +7,9 @@ category: Blog
 draft: false
 tags:
   - WSUS
+  - ADCS
+  - DNS_Zone
+  - DNS
 ---
 
 Antes de entrar de lleno a la parte práctica y los comandos, es vital asentar las bases teóricas. A menudo, en el mundo del *Red Teaming*, nos encontramos con vulnerabilidades que nacen no de un error de código, sino de una mitigación humana mal implementada. Este es el caso de **ESC17**. 
