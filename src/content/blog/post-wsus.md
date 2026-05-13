@@ -57,7 +57,7 @@ Dentro de lo necesario para ejecutar la PoC tenemos:
 
 Nos autenticamos con jaylee.clifton mediante evil-winrm 
 
-![](images_dns/Pasted%20image%2020260507170326.png)
+![](images_dns/Pasted%20image%2020260513000241.png)
 
 El punto de partida de nuestra cadena de explotación no requiere privilegios elevados. Tras comprometer las credenciales del usuario `jaylee.clifton`, establecemos una sesión remota a través de WinRM.
 
