@@ -150,3 +150,82 @@ body {
 ::selection {
   @apply bg-white/20 text-white;
 }
+/* =========================================
+   1. EL FIX DE LOS COMANDOS (Expressive Code)
+   ========================================= */
+.expressive-code,
+.expressive-code figure.frame,
+.expressive-code figure {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+pre[data-language],
+.expressive-code pre {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+}
+
+.ec-line { max-width: 100% !important; }
+.ec-line .code { min-width: 0 !important; }
+
+/* =========================================
+   2. ANTI-DESCUADRE DEL POST PRINCIPAL
+   ========================================= */
+#post-content {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
+
+/* =========================================
+   3. FIX TOTAL DEL ÍNDICE (Layout + Salto de línea)
+   ========================================= */
+/* A. Forzar salto de línea (Adiós puntos suspensivos) */
+#table-of-contents a span.truncate, 
+nav[class*="toc"] a span.truncate,
+div[class*="toc"] a span.truncate,
+.toc a span.truncate {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    display: block !important; /* <--- ESTE ES EL SECRETO PARA ROMPER EL FLEXBOX */
+    line-height: 1.5 !important;
+}
+
+/* A.2 Asegurar que el enlace padre permita crecer hacia abajo */
+#table-of-contents a, 
+nav[class*="toc"] a,
+div[class*="toc"] a,
+.toc a {
+    height: auto !important;
+    align-items: flex-start !important;
+}
+
+/* B. Tamaño estricto y efecto Sticky (Flotante) */
+#table-of-contents, 
+nav[class*="toc"],
+div[class*="toc"] {
+    width: 300px !important;
+    max-width: 30% !important;
+    flex-shrink: 0 !important;
+    
+    position: sticky !important;
+    top: 30px !important; 
+    max-height: calc(100vh - 48px) !important;
+    overflow-y: auto !important;
+}
+
+/* C. Barra de scroll elegante solo para el índice */
+#table-of-contents::-webkit-scrollbar, 
+nav[class*="toc"]::-webkit-scrollbar,
+div[class*="toc"]::-webkit-scrollbar {
+    width: 4px;
+}
+#table-of-contents::-webkit-scrollbar-thumb, 
+nav[class*="toc"]::-webkit-scrollbar-thumb,
+div[class*="toc"]::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}

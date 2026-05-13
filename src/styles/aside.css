@@ -102,3 +102,13 @@ aside.content section code {
   background-color: rgba(255, 255, 255, 0.15);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
+/* ===== Ajuste para títulos largos en el Índice ===== */
+aside #table-of-contents a,
+aside nav a,
+aside.content a {
+  white-space: normal !important;
+  word-wrap: break-word;
+  word-break: break-word;
+  display: inline-block;
+  max-width: 100%;
+}

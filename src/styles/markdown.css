@@ -101,6 +101,10 @@
 .ec-line {
   @apply font-mono!;
 }
+/* ===== Ajuste para scroll en comandos largos ===== */
+#post-content pre {
+  @apply overflow-x-auto max-w-full;
+}
 /* 區塊 code 不要 hover 變色 */
 /* #post-content pre code {
   @apply bg-transparent px-0 py-0 transition-none;
