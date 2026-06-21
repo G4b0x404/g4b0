@@ -2,6 +2,7 @@
 import config from "@shConfig";
 import AuthorCard from "./widgets/AuthorCard";
 import DiscordCard from "./widgets/DiscordCard";
+import CheatsheetCard from "./widgets/CheatsheetCard";
 ---
 
 <!-- Sidebar -->
@@ -18,7 +19,7 @@ import DiscordCard from "./widgets/DiscordCard";
 
   <!-- Discord cards -->
   <a
-    href="https://discord.gg/MZuntWfdbn"
+    href="https://discord.gg/58WxDzeJd"
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -27,6 +28,20 @@ import DiscordCard from "./widgets/DiscordCard";
       title="Discord"
       subtitle="¡Únete a la Comunidad!"
       description="Servidor de Discord para compartir writeups y networking en ciberseguridad!"
+    />
+  </a>
+
+  <!-- Cheatsheets card -->
+  <a
+    href="https://g4b0.gitbook.io/g4b0-docs"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <CheatsheetCard
+      client:load
+      title="Cheatsheets"
+      subtitle="G4b0 Docs"
+      description="Mis cheatsheets y apuntes técnicos de pentesting y Active Directory."
     />
   </a>
 
