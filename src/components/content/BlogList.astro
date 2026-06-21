@@ -24,6 +24,7 @@ const serializedPosts = allPosts.map((post) => ({
     heroImage: post.data.heroImage ? { src: post.data.heroImage.src } : null,
     category: post.data.category ?? null,
     tags: post.data.tags ?? null,
+    locked: post.data.locked ?? false,
   },
 }));
 ---

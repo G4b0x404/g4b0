@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
+import LockedNotice from "@components/content/LockedNotice.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => {
@@ -16,15 +17,31 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { Content, headings } = await render(post);
+
+const isLocked = post.data.locked === true && !import.meta.env.DEV;
+
+let Content: any = null;
+let headings: any[] = [];
+if (!isLocked) {
+  const rendered = await render(post);
+  Content = rendered.Content;
+  headings = rendered.headings;
+}
+
 const ImagePacked = (await import("@components/markdown/ImagePacked.astro"))
   .default;
 ---
 
 <BlogPost {...post.data} headings={headings}>
-  <Content
-    components={{
-      img: ImagePacked,
-    }}
-  />
+  {
+    isLocked ? (
+      <LockedNotice title={post.data.title} />
+    ) : (
+      <Content
+        components={{
+          img: ImagePacked,
+        }}
+      />
+    )
+  }
 </BlogPost>

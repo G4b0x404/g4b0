@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader } from "@ui/card.tsx";
-import { Tag } from "lucide-react";
+import { Tag, Lock } from "lucide-react";
 import Tags from "@ui/Tags.tsx";
 import { useEffect, useState } from "react";
 import config from "@shConfig";
@@ -16,6 +16,7 @@ interface BlogCardProps {
   isLoading?: boolean;
   category: string | string[] | null;
   tags: string[] | null;
+  locked?: boolean;
 }
 
 export default function BlogCard({
@@ -26,6 +27,7 @@ export default function BlogCard({
   href,
   category,
   tags,
+  locked = false,
   isLoading = false,
 }: BlogCardProps) {
   const [formattedDate, setFormattedDate] = useState<string>("");
@@ -72,13 +74,26 @@ export default function BlogCard({
 
         <CardHeader className="p-0 pb-0 relative z-10">
           {/* Image */}
-          <div className="h-50 overflow-hidden bg-neutral-700">
+          <div className="h-50 overflow-hidden bg-neutral-700 relative">
             {!isLoading && heroImage && (
               <img
                 src={heroImage}
                 alt={title}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${
+                  locked ? "blur-sm scale-105" : ""
+                }`}
               />
+            )}
+            {!isLoading && locked && (
+              <>
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                  <Lock size={40} className="text-green-400" />
+                </div>
+                <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/70 border border-green-500/40 text-green-400 text-xs font-mono">
+                  <Lock size={12} />
+                  Activa
+                </div>
+              </>
             )}
           </div>
         </CardHeader>

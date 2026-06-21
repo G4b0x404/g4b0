@@ -314,13 +314,13 @@ const config: ShBlogConfig = {
         socialMedia: "/assets/logo/social_media/linkedin_icon.svg",
         url: "https://www.linkedin.com/in/pgarcia-ramos",
       },
-      {
-        socialMedia: "Instagram",
-        url: "https://www.instagram.com/tu-usuario/",
-      },
+      //{
+      //  socialMedia: "Instagram",
+      //  url: "https://www.instagram.com/tu-usuario/",
+      //},
       {
         socialMedia: "Github",
-        url: "https://github.com/tu-usuario",
+        url: "https://github.com/G4b0x404",
       },
       //{
       //  socialMedia: "Bento",
@@ -332,7 +332,7 @@ const config: ShBlogConfig = {
       //},
       {
         socialMedia: "Discord",
-        url: "https://discord.gg/ejemplo",
+        url: "https://discord.gg/58WxDzeJd",
       },
      // {
      //  socialMedia: "Figma",

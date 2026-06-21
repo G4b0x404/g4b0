@@ -19,6 +19,7 @@ type Post = {
     heroImage?: { src: string } | null;
     category: string | string[] | null;
     tags: string[] | null;
+    locked?: boolean;
   };
 };
 
@@ -89,6 +90,7 @@ export default function BlogListClient({
             heroImage={post.data.heroImage?.src || DEFAULT_POST_IMAGE}
             category={post.data.category}
             tags={post.data.tags}
+            locked={post.data.locked}
             href={`/blog/${post.id}/`}
             isLoading={false}
           />

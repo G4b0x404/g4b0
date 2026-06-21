@@ -46,7 +46,7 @@ loadEnv();
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || "https://sh-blog-next.vercel.app",
+  site: process.env.SITE_URL || "https://g4b0.pages.dev",
   integrations: [AutoImport({
     imports: [asideAutoImport],
   }), astroAsides(), expressiveCode(), mdx(), sitemap({

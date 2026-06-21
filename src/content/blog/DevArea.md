@@ -14,6 +14,7 @@ tags:
   - HoverFLY
   - writeup
 draft: false
+locked: true
 ---
 ## 1. Enumeración
 
