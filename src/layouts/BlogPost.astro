@@ -63,7 +63,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
 
   <BaseMainContent>
     <!-- Main column: Blog post content -->
-    <article class="flex-1">
+    <article class="flex-1 min-w-0">
       <div>
         <!-- 文章資訊 -->
         <div class="flex mb-4 gap-2">
@@ -126,7 +126,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
     </article>
 
     <!-- TOC Sidebar -->
-    <div>
+    <div class="lg:w-72 lg:shrink-0">
       {/*<Sidebar />*/}
       {
         headings?.length > 0 && config.behavior.tableOfContents.enable && (

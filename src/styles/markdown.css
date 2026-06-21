@@ -23,7 +23,15 @@
 #post-content li,
 #post-content ol,
 #post-content ul {
-  @apply text-lg leading-relaxed text-neutral-400;
+  @apply text-lg leading-relaxed text-neutral-400 break-words;
+}
+
+/* Cadenas largas sin espacios (hashes, URLs, comandos en code inline)
+   que rompan en vez de desbordar el ancho del contenido */
+#post-content :not(pre) > code,
+#post-content a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* 標題樣式 */

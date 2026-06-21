@@ -70,11 +70,11 @@ const tocTree = headings.reduce(
               <li class="group">
                 <a
                   href={`#${item.slug}`}
-                  class={`toc-link toc-level-${minDepth} flex items-center gap-2 px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors duration-400 relative`}
+                  class={`toc-link toc-level-${minDepth} flex items-start gap-2 px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors duration-400 relative`}
                   data-heading-index={index}
                   data-heading-slug={item.slug}
                 >
-                  <span class="flex-1 truncate">{item.text}</span>
+                  <span class="flex-1 min-w-0 break-words leading-snug">{item.text}</span>
                   {item.children.length > 0 && (
                     <Button
                       className="toc-toggle shrink-0 w-5 h-5 flex items-center justify-center rounded hover:bg-slate-700 transition-colors"
@@ -103,7 +103,7 @@ const tocTree = headings.reduce(
                       <li>
                         <a
                           href={`#${child.slug}`}
-                          class={`toc-link toc-level-${child.depth} block py-1.5 text-xs text-slate-400 hover:text-slate-100 transition-colors duration-400 truncate`}
+                          class={`toc-link toc-level-${child.depth} block py-1.5 text-xs text-slate-400 hover:text-slate-100 transition-colors duration-400 break-words leading-snug`}
                           style={`padding-left: ${1.5 + (child.depth - minDepth) * 1}rem;`}
                           data-heading-slug={child.slug}
                           tabindex="-1"
