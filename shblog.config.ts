@@ -34,39 +34,39 @@ const config: ShBlogConfig = {
   pages: {
     // Configuración de la página de inicio
     home: {
-      title: "El intruso no avisa\nUn verdadero hacker tampoco.", 
+      title: "No hay sistema seguro\nSolo sistemas sin probar", 
       heroImage: "/assets/layouts/homepage/fondoblog.png", 
       greetings: [
         // Saludos según la hora del día
         {
           begin: 0,
           finish: 6,
-          text: "¡Buenas madrugadas! A esta hora el SOC duerme...",
+          text: "A esta hora el SOC duerme...",
         },
         {
           begin: 6,
           finish: 12,
-          text: "¡Buenos días! Happy Hacking :D",
+          text: "Happy Hacking :D",
         },
         {
           begin: 12,
           finish: 14,
-          text: "¡Buenas tardes! Una pausa activa y regresamos con fuerza",
+          text: "Una pausa activa y regresamos con fuerza",
         },
         {
           begin: 14,
           finish: 18,
-          text: "¡Buenas tardes! Recuerda siempre tomar agua",
+          text: "Recuerda siempre tomar agua",
         },
         {
           begin: 18,
           finish: 21,
-          text: "¡Cae la noche! Modo Black Hat.",
+          text: "Modo Black Hat.",
         },
         {
           begin: 21,
           finish: 24,
-          text: "¡Buenas noches! Ese bounty no se conseguirá solo...",
+          text: "Ese bounty no se conseguirá solo...",
         },
         {
           text: "¡Hola!",
