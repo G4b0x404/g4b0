@@ -25,9 +25,7 @@ pnpm-debug.log*
 wrangler.jsonc
 
 # 文章
-src/content/blog/*
-src/assets/blog/*
-public/assets/blog/*
+
 
 # Frontmatter CMS
 .frontmatter/database/
