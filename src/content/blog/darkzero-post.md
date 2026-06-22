@@ -2,7 +2,7 @@
 title: DarkZero
 description: WriteUp DarkZero
 pubDate: May 18 2026
-heroImage: ../../assets/blog-placeholder-2.jpg
+heroImage: ../../assets/darkzeroimage.png
 category: writeup
 draft: false
 tags:
