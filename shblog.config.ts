@@ -28,7 +28,7 @@ const config: ShBlogConfig = {
   siteLang: "en", // Mantenemos la variable interna del tema para evitar conflictos
 
   // Ruta del Favicon
-  favicon: "/favicon5.png",
+  favicon: "/favicon6.png",
 
   // Configuración de páginas
   pages: {
